@@ -1,0 +1,159 @@
+/* Cargar tipografía local Helvetica */
+@font-face {
+    font-family: 'Helvetica';
+    src: url('../fonts/Helvetica/Helvetica.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica';
+    src: url('../fonts/Helvetica/Helvetica-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Estilos base */
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Helvetica', Arial, sans-serif;
+    margin: 0;
+    padding: 60px 0; /* Crea espacio para que las marquesinas no tapen el contenido */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #ffff00;
+    text-decoration: underline;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 30px;
+    font-weight: normal;
+}
+
+/* Menú responsivo */
+.menu-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0 40px 0;
+    padding: 0 15px;
+}
+
+/* Contenedor de imagen central */
+.centered_image_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.centered_image {
+    width: 500px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Marquesinas (Arriba y Abajo) */
+.marquesina-contenedor {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    background-color: #000000;
+    padding: 12px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    z-index: 1000;
+}
+
+.marquesina-contenedor.top {
+    top: 0;
+    border-bottom: 1px dashed #ffffff;
+}
+
+.marquesina-contenedor.bottom {
+    bottom: 0;
+    border-top: 1px dashed #ffffff;
+}
+
+.marquesina-texto {
+    display: inline-block;
+    color: #ffff00;
+    font-size: 1rem;
+    text-transform: uppercase;
+    animation: mover-texto 25s linear infinite;
+}
+
+@keyframes mover-texto {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Gifs decorativos */
+.gif-izquierda, .gif-derecha {
+    position: fixed;
+    top: 70px; /* Justo debajo de la marquesina superior */
+    width: 40px;
+    z-index: 999;
+}
+
+.gif-izquierda { left: 20px; }
+.gif-derecha { right: 20px; }
+
+/* Caja de luz */
+#caja-luz {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.85);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+#caja-luz img {
+    max-width: 90%;
+    max-height: 90vh;
+    border: 2px solid #ffffff;
+    box-shadow: 0px 0px 30px #000000;
+}
+
+/* Adaptación para pantallas pequeñas (Teléfonos) */
+@media (max-width: 600px) {
+    .gif-izquierda, .gif-derecha {
+        width: 30px;
+        top: 60px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+
+    .menu-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+}
