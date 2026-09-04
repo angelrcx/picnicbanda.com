@@ -6,20 +6,14 @@
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'Helvetica';
-    src: url('../fonts/Helvetica/Helvetica-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-
 /* Estilos base */
 body {
     background-color: #000000;
     color: #ffffff;
     font-family: 'Helvetica', Arial, sans-serif;
+    font-weight: normal; /* Asegura que todo el cuerpo sea regular */
     margin: 0;
-    padding: 60px 0; /* Crea espacio para que las marquesinas no tapen el contenido */
+    padding: 50px 0; /* Espacio para no tapar contenido */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,7 +23,7 @@ body {
 a {
     color: #ffffff;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: normal; /* Se quitó el bold */
     font-size: 1rem;
     transition: color 0.2s ease;
 }
@@ -72,15 +66,14 @@ h1 {
     height: auto;
 }
 
-/* Marquesinas (Arriba y Abajo) */
+/* --- ESTILOS DE MARQUESINA MEJORADOS --- */
 .marquesina-contenedor {
     position: fixed;
     left: 0;
     width: 100%;
     background-color: #000000;
-    padding: 12px 0;
+    padding: 6px 0; /* Más delgado */
     overflow: hidden;
-    white-space: nowrap;
     z-index: 1000;
 }
 
@@ -94,23 +87,30 @@ h1 {
     border-top: 1px dashed #ffffff;
 }
 
-.marquesina-texto {
-    display: inline-block;
-    color: #ffff00;
-    font-size: 1rem;
-    text-transform: uppercase;
-    animation: mover-texto 25s linear infinite;
+.marquesina-track {
+    display: flex;
+    width: max-content; /* Permite que el contenedor mida exactamente lo que los textos */
+    animation: mover-texto 20s linear infinite; /* Ajusta los segundos si lo quieres más rápido o lento */
 }
 
+.marquesina-texto {
+    color: #ffff00;
+    font-size: 0.85rem; /* Tamaño de fuente reducido */
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding-right: 15px; /* Pequeño espacio para que conecte con la segunda copia */
+}
+
+/* El truco: se mueve exactamente la mitad de su tamaño total (lo que equivale a un texto completo), creando el loop invisible */
 @keyframes mover-texto {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 /* Gifs decorativos */
 .gif-izquierda, .gif-derecha {
     position: fixed;
-    top: 70px; /* Justo debajo de la marquesina superior */
+    top: 60px;
     width: 40px;
     z-index: 999;
 }
@@ -140,11 +140,11 @@ h1 {
     box-shadow: 0px 0px 30px #000000;
 }
 
-/* Adaptación para pantallas pequeñas (Teléfonos) */
+/* --- ADAPTACIÓN PARA TELÉFONOS (Móvil) --- */
 @media (max-width: 600px) {
     .gif-izquierda, .gif-derecha {
         width: 30px;
-        top: 60px;
+        top: 50px;
     }
     
     h1 {
@@ -155,5 +155,13 @@ h1 {
         flex-direction: column;
         align-items: center;
         gap: 15px;
+    }
+
+    /* Reducimos aún más el tamaño de los anuncios en celular */
+    .marquesina-texto {
+        font-size: 0.65rem; 
+    }
+    .marquesina-contenedor {
+        padding: 4px 0;
     }
 }
