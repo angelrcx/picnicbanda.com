@@ -181,7 +181,7 @@ h1 {
     width: 220px;
     height: auto;
     object-fit: cover;
-    margin: -25px;
+    margin: -60px;
     cursor: pointer;
     box-shadow: 2px 4px 15px rgba(0,0,0,0.8);
     transition: transform 0.2s ease, border 0.2s ease;
